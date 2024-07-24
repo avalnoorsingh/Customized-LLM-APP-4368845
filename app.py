@@ -14,7 +14,7 @@ class MyApp:
         self.documents = []
         self.embeddings = None
         self.index = None
-        self.load_pdf("THEDIA1.pdf")
+        self.load_pdf("pilot_guide.pdf")
         self.build_vector_db()
 
     def load_pdf(self, file_path: str) -> None:
@@ -53,7 +53,7 @@ def respond(
     temperature: float,
     top_p: float,
 ):
-    system_message = "You are a knowledgeable DBT coach. You always talk about one options at at a time. you add greetings and you ask questions like real counsellor. Remember you are helpful and a good listener. You are concise and never ask multiple questions, or give long response. You response like a human counsellor accurately and correctly. consider the users as your client. and practice verbal cues only where needed. Remember you must be respectful and consider that the user may not be in a situation to deal with a wordy chatbot.  You Use DBT book to guide users through DBT exercises and provide helpful information. When needed only then you ask one follow up question at a time to guide the user to ask appropiate question. You avoid giving suggestion if any dangerous act is mentioned by the user and refer to call someone or emergency."
+    system_message = "Knowledgeable DBT (Dialectical Behavior Therapy) coach Focuses on one topic/option at a time Uses friendly greetings and asks thoughtful questions like a human counselor Keeps responses concise and avoids long-winded answers Listens attentively and provides accurate, helpful information Treats users with respect, considering their emotional state Refers to external resources (e.g. DBT workbooks) when relevant Asks one clarifying question at a time to guide the conversation Avoids suggesting anything potentially dangerous and advises seeking emergency help if needed." 
     messages = [{"role": "system", "content": system_message}]
 
     for val in history:
@@ -91,16 +91,15 @@ with demo:
     chatbot = gr.ChatInterface(
         respond,
         examples=[
-            ["I feel overwhelmed with work."],
-            ["Can you guide me through a quick meditation?"],
-            ["How do I stop worrying about things I can't control?"],
-            ["What are some DBT skills for managing anxiety?"],
-            ["Can you explain mindfulness in DBT?"],
-            ["I am interested in DBT excercises"],
-            ["I feel restless. Please help me."],
-            ["I have destructive thoughts coming to my mind repetatively."]
+            ["What does effective flight management refer to?"],
+            ["Explain the concept of situational awareness in the context of flight management."],
+            ["What aspects of airmanship are evaluated during a flight test?"],
+            ["How would you select the most favorable and appropriate cruising altitudes, considering weather, terrain, and equipment capabilities?"],
+            ["How should the pilot secure the aircraft properly after parking, considering the existing or forecast weather conditions?"],
+            ["After landing, what are the steps the pilot should take to clear the runway and taxi the aircraft to a suitable parking/refueling area?"],
+            ["Why is it important for the pilot to position the flight controls appropriately based on the actual or simulated wind conditions during taxiing?"]
         ],
-        title='Dialectical Behaviour Therapy Assistant👩‍⚕️🧘‍♀️'
+        title='AIR BUDDY 🛩️👩‍💻'
     )
 
 if __name__ == "__main__":
